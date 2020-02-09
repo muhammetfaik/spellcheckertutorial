@@ -9,11 +9,11 @@ dictionary_path = pkg_resources.resource_filename(
 sym_spell.load_dictionary(dictionary_path, term_index=0, count_index=1)
 
 # lookup suggestions for single-word input strings
-input_term = "memebers"  # misspelling of "members"
+input_term = "members1"
 # max edit distance per lookup
 # (max_edit_distance_lookup <= max_dictionary_edit_distance)
 suggestions = sym_spell.lookup(input_term, Verbosity.CLOSEST,
-                               max_edit_distance=2)
+                               max_edit_distance=2, ignore_token=r"\w+\d")
 # display suggestion term, term frequency, and edit distance
 for suggestion in suggestions:
     print(suggestion)
